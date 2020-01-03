@@ -348,3 +348,6 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+# Rider (cross platform IDE for C#/F# based on Idea) working folder
+.idea/

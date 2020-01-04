@@ -56,9 +56,9 @@ namespace OCS.Net.Addressing
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static IPv4AddressInternal BytesToPv4AddressInternal(byte[] segments)
         {
-            if (segments.Length == IPv4AddressInternal.SegmentsCount)
+            if (segments.Length != IPv4AddressInternal.SegmentsCount)
                 throw new ArgumentException(
-                    message: "IP v4 address consist of 4 single byte segments exactly",
+                    message: "IP v4 address should consist of 4 single byte segments exactly",
                     paramName: nameof(segments)
                 );
 

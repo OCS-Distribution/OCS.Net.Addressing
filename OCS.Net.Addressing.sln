@@ -2,6 +2,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OCS.Net.Addressing", "src\OCS.Net.Addressing\OCS.Net.Addressing.csproj", "{7FC9A567-3505-4771-A27C-70376B25D445}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OCS.Net.Addressing.Benchmarks", "src\OCS.Net.Addressing.Benchmarks\OCS.Net.Addressing.Benchmarks.csproj", "{9C7A80E7-E7FC-42C0-B157-24C29DC7C098}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OCS.Net.Addressing.Tests", "src\OCS.Net.Addressing.Tests\OCS.Net.Addressing.Tests.csproj", "{01AC6108-2BC7-4A4D-9042-6526ED5E8DD4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +16,13 @@ Global
 		{7FC9A567-3505-4771-A27C-70376B25D445}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7FC9A567-3505-4771-A27C-70376B25D445}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7FC9A567-3505-4771-A27C-70376B25D445}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C7A80E7-E7FC-42C0-B157-24C29DC7C098}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C7A80E7-E7FC-42C0-B157-24C29DC7C098}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C7A80E7-E7FC-42C0-B157-24C29DC7C098}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C7A80E7-E7FC-42C0-B157-24C29DC7C098}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01AC6108-2BC7-4A4D-9042-6526ED5E8DD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01AC6108-2BC7-4A4D-9042-6526ED5E8DD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01AC6108-2BC7-4A4D-9042-6526ED5E8DD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01AC6108-2BC7-4A4D-9042-6526ED5E8DD4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

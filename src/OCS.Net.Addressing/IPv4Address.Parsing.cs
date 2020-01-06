@@ -44,21 +44,6 @@ namespace OCS.Net.Addressing
             return new IPv4Address(result);
         }
 
-        // public static IPv4Address Parse2(string ip)
-        // {
-        //     if (String.IsNullOrWhiteSpace(ip))
-        //         ThrowArgumentException();
-        //
-        //     int segmentIndex = 0;
-        //     var result = new IPv4AddressInternal();
-        //     for (int i = 0; i < ip.Length; i++)
-        //     {
-        //         if (ip[i] == IPv4SegmentDelimer)
-        //         {
-        //         }
-        //     }
-        // }
-
         [DoesNotReturn]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static void ThrowArgumentException() =>

@@ -44,7 +44,7 @@ namespace OCS.Net.Addressing
         public override string ToString()
         {
             return String.Join(
-                IPv4SegmentDelimer.ToString(),
+                IPv4SegmentDelimiter.ToString(),
                 
                 this.ipv4.Segment1.ToString(),
                 this.ipv4.Segment2.ToString(),

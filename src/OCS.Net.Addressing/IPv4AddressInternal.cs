@@ -8,14 +8,14 @@ namespace OCS.Net.Addressing
     [StructLayout(LayoutKind.Explicit, Size = sizeof(UInt32))]
     internal struct IPv4AddressInternal
     {
-        [FieldOffset(0)] public UInt32 Address;
+        [FieldOffset(0)] internal UInt32 Address;
 
-        [FieldOffset(0)] public byte Segment1;
-        [FieldOffset(1)] public byte Segment2;
-        [FieldOffset(2)] public byte Segment3;
-        [FieldOffset(3)] public byte Segment4;
+        [FieldOffset(0)] internal byte Segment1;
+        [FieldOffset(1)] internal byte Segment2;
+        [FieldOffset(2)] internal byte Segment3;
+        [FieldOffset(3)] internal byte Segment4;
 
-        public byte this[int index]
+        internal byte this[int index]
         {
             get
             {
@@ -50,6 +50,6 @@ namespace OCS.Net.Addressing
                 throw new IndexOutOfRangeException();
         }
 
-        public const int SegmentsCount = 4;
+        internal const int SegmentsCount = 4;
     }
 }

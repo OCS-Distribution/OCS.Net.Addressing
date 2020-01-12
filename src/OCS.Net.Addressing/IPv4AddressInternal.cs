@@ -46,10 +46,8 @@ namespace OCS.Net.Addressing
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static void AssertIndex(int index)
         {
-            if (index < 0 || index >= SegmentsCount)
+            if (index < 0 || index >= FormatAndStructureInfo.IPv4SegmentsCount)
                 throw new IndexOutOfRangeException();
         }
-
-        internal const int SegmentsCount = 4;
     }
 }

@@ -44,7 +44,7 @@ namespace OCS.Net.Addressing
         public override string ToString()
         {
             return String.Join(
-                IPv4SegmentDelimiter.ToString(),
+                FormatAndStructureInfo.IPv4SegmentDelimiter,
                 
                 this.ipv4.Segment1.ToString(),
                 this.ipv4.Segment2.ToString(),
@@ -56,14 +56,14 @@ namespace OCS.Net.Addressing
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static IPv4AddressInternal BytesToPv4AddressInternal(byte[] segments)
         {
-            if (segments.Length != IPv4AddressInternal.SegmentsCount)
+            if (segments.Length != FormatAndStructureInfo.IPv4SegmentsCount)
                 throw new ArgumentException(
                     message: "IP v4 address should consist of 4 single byte segments exactly",
                     paramName: nameof(segments)
                 );
 
             var address = new IPv4AddressInternal();
-            for (int i = 0; i < IPv4AddressInternal.SegmentsCount; i++)
+            for (int i = 0; i < FormatAndStructureInfo.IPv4SegmentsCount; i++)
                 address[i] = segments[i];
             
             return address;

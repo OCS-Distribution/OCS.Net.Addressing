@@ -1,6 +1,6 @@
 using System;
 
-namespace OCS.Net.Addressing
+namespace OCS.Net.Addressing.Internal
 {
     internal static class ParserHelper
     {

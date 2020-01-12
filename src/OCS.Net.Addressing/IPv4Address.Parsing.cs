@@ -1,6 +1,7 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
+using OCS.Net.Addressing.Internal;
 
 namespace OCS.Net.Addressing
 {

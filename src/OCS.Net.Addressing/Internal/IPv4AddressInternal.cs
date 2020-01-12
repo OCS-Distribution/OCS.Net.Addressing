@@ -3,7 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-namespace OCS.Net.Addressing
+namespace OCS.Net.Addressing.Internal
 {
     [StructLayout(LayoutKind.Explicit, Size = sizeof(UInt32))]
     internal struct IPv4AddressInternal

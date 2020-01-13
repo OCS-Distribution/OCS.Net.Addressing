@@ -29,6 +29,7 @@ namespace OCS.Net.Addressing.Test
         [InlineData("192.168.1.1.1")]
         [InlineData("192.168.1.1.")]
         [InlineData("192.168.1")]
+        [InlineData("192..168.1")]
         public void ParseInvalidIPv4Address_ShouldFail(string ip)
         {
             var isParsed = IPv4Address.TryParse(ip, out var result);

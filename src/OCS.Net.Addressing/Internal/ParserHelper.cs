@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 
 namespace OCS.Net.Addressing.Internal
 {
@@ -16,46 +17,45 @@ namespace OCS.Net.Addressing.Internal
             result = new IPv4AddressInternal();
             
             var segmentIdx = 0;
-            // use variable for storing current segment value
-            // for avoiding indexer multiple calls result[segmentIdx]
-            int segment = 0;
             
-            // current processed character
-            char ch;
             // current character index and end position initializing
             var i = endPosition = startPosition;
-            bool atLeastOne = false;
             
             do
             {
-                // if current character is segment delimiter
-                if (i >= ip.Length ||
-                    // store current character to the local variable ch
-                    // for avoiding indexer multiple calls ip[i]
-                    (ch = ip[i]) == FormatAndStructureInfo.IPv4SegmentDelimiter)
-                {
-                    // disallow empty segments like 192.168..1
-                    if (!atLeastOne) return false;
-                    
-                    // fail if current segment value is more than max allowed segment value
-                    if (segment > FormatAndStructureInfo.IPv4MaxSegmentValue)
-                        return false;
+                if (!ParseSegment(ref ip, ref i, ref segmentIdx, ref result)) return false;
+                
+                if (i == ip.Length) break;
+
+                var ch = ip[i];
+                if (ch == FormatAndStructureInfo.IPv4SegmentDelimiter) continue; 
+                else if (ch == FormatAndStructureInfo.NetworkMaskDelimiter) break;
+                else return false;
+                
+            } while (i++ < ip.Length);
+
+            endPosition = i;
             
-                    // stop if address contains too many segments
-                    if (segmentIdx >= FormatAndStructureInfo.IPv4SegmentsCount)
-                        return false;
-                    
-                    // store current parsed segment to result variable
-                    // increase forward current segment index
-                    // clear segment
-                    unchecked { result[segmentIdx++] = (byte) segment; }
+            // all segments was parsed validation
+            return segmentIdx == FormatAndStructureInfo.IPv4SegmentsCount;
+        }
+
+        private static bool ParseSegment(ref ReadOnlySpan<char> ip, 
+                                         ref int currentIdx, 
+                                         ref int segmentIdx, 
+                                         ref IPv4AddressInternal result)
+        {
+            var atLeastOne = false;
+            // use variable for storing current segment value
+            // for avoiding indexer multiple calls result[segmentIdx]
+            var segment = 0;
             
-                    segment = 0;
-                    atLeastOne = false;
-                }
-                // !!! NOTE: noncanonical ips like 0300.0300.0300.0300 or 0xff.0xff.0xff.0xff aren't supported
-                // if current character is a decimal digit
-                else if ('0' <= ch && ch <= '9')
+            for (; currentIdx < ip.Length; currentIdx++)
+            {
+                // store current character to the local variable ch
+                // for avoiding indexer multiple calls ip[i]
+                var ch = ip[currentIdx];
+                if ('0' <= ch && ch <= '9')
                 {
                     // convert character code to digit
                     // decimal digits are placed sequentially in the encoding table 
@@ -72,14 +72,34 @@ namespace OCS.Net.Addressing.Internal
                     segment = segment * 10 + val;
                     atLeastOne = true;
                 }
-                else // not expected character
+                else
                 {
-                    return false;
+                    break;
                 }
-            } while ((endPosition = i++) < ip.Length);
+            }
 
-            // all segments was parsed validation
-            return segmentIdx == FormatAndStructureInfo.IPv4SegmentsCount;
+            // disallow empty segments like 192.168..1
+            if (!atLeastOne) return false;
+                    
+            // fail if current segment value is more than max allowed segment value
+            if (segment > FormatAndStructureInfo.IPv4MaxSegmentValue)
+                return false;
+            
+            // stop if address contains too many segments
+            if (segmentIdx >= FormatAndStructureInfo.IPv4SegmentsCount)
+                return false;
+                    
+            // store current parsed segment to result variable
+            // increase forward current segment index
+            // clear segment
+            result[segmentIdx++] = (byte) segment;
+
+            return true;
+        }
+
+        internal static bool TryParseCDR(ReadOnlySpan<char> cdr, out byte result)
+        {
+            return byte.TryParse(cdr, NumberStyles.Integer, NumberFormatInfo.InvariantInfo, out result);
         }
     }
 }

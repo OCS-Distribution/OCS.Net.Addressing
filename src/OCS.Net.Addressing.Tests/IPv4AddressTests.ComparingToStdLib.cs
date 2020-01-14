@@ -13,9 +13,7 @@ namespace OCS.Net.Addressing.Test
         {
             var parsedIP = IPv4Address.Parse(ip);
             var stdLibIP = IPAddress.Parse(ip);
-            #pragma warning disable 618
-            var comparableStdLibIP = new IPv4Address((uint)stdLibIP.Address);
-            #pragma warning restore 618
+            var comparableStdLibIP = new IPv4Address(stdLibIP.GetAddressBytes());
             
             Assert.Equal(comparableStdLibIP, parsedIP);
         }

@@ -38,6 +38,8 @@ namespace OCS.Net.Addressing
         {
             // empty
         }
+
+        internal IPv4AddressInternal InternalAddress => this.ipv4;
         
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public override int GetHashCode() => ipv4.Address.GetHashCode();

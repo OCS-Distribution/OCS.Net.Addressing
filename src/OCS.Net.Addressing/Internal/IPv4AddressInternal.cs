@@ -10,10 +10,10 @@ namespace OCS.Net.Addressing.Internal
     {
         [FieldOffset(0)] internal UInt32 Address;
 
-        [FieldOffset(0)] internal byte Segment1;
-        [FieldOffset(1)] internal byte Segment2;
-        [FieldOffset(2)] internal byte Segment3;
-        [FieldOffset(3)] internal byte Segment4;
+        [FieldOffset(3)] internal byte Segment1;
+        [FieldOffset(2)] internal byte Segment2;
+        [FieldOffset(1)] internal byte Segment3;
+        [FieldOffset(0)] internal byte Segment4;
 
         internal byte this[int index]
         {

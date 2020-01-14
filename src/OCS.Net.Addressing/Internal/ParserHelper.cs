@@ -11,10 +11,10 @@ namespace OCS.Net.Addressing.Internal
             int startPosition, // start parse from this position 
             out int endPosition, // position of end parsing
             
-            out IPv4AddressInternal result
+            out IPv4AddressValue result
         )
         {
-            result = new IPv4AddressInternal();
+            result = new IPv4AddressValue();
             
             var segmentIdx = 0;
             
@@ -43,7 +43,7 @@ namespace OCS.Net.Addressing.Internal
         private static bool ParseSegment(ref ReadOnlySpan<char> ip, 
                                          ref int currentIdx, 
                                          ref int segmentIdx, 
-                                         ref IPv4AddressInternal result)
+                                         ref IPv4AddressValue result)
         {
             var atLeastOne = false;
             // use variable for storing current segment value

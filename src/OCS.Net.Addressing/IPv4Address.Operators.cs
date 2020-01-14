@@ -8,7 +8,7 @@ namespace OCS.Net.Addressing
         #region Equatable
         
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool Equals(IPv4Address other) => this.ipv4.Address == other.ipv4.Address;
+        public bool Equals(IPv4Address other) => this.value.Address == other.value.Address;
 
         public override bool Equals(object obj)
         {
@@ -27,19 +27,19 @@ namespace OCS.Net.Addressing
         #region Compare
         
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public int CompareTo(IPv4Address other) => this.ipv4.Address.CompareTo(other.ipv4.Address);
+        public int CompareTo(IPv4Address other) => this.value.Address.CompareTo(other.value.Address);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool operator >(IPv4Address lo, IPv4Address ro) => lo.ipv4.Address > ro.ipv4.Address;
+        public static bool operator >(IPv4Address lo, IPv4Address ro) => lo.value.Address > ro.value.Address;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool operator <(IPv4Address lo, IPv4Address ro) => lo.ipv4.Address < ro.ipv4.Address;
+        public static bool operator <(IPv4Address lo, IPv4Address ro) => lo.value.Address < ro.value.Address;
         
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool operator >=(IPv4Address lo, IPv4Address ro) => lo.ipv4.Address >= ro.ipv4.Address;
+        public static bool operator >=(IPv4Address lo, IPv4Address ro) => lo.value.Address >= ro.value.Address;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool operator <=(IPv4Address lo, IPv4Address ro) => lo.ipv4.Address <= ro.ipv4.Address;
+        public static bool operator <=(IPv4Address lo, IPv4Address ro) => lo.value.Address <= ro.value.Address;
 
         #endregion
     }

@@ -28,7 +28,7 @@ namespace OCS.Net.Addressing.Test
         [InlineData(new byte[] {255, 255, 240, 0}, 20, new byte[] {255, 255, 240, 192})]
         public void ContainsOnAddressesInsideNetwork_ShouldReturnTrue(byte[] networkBytes, byte cdr, byte[] addressBytes)
         {
-            var network = new IPv4Network(new IPv4AddressInternal
+            var network = new IPv4Network(new IPv4AddressValue
             {
                 Segment1 = networkBytes[0],
                 Segment2 = networkBytes[1],

@@ -11,10 +11,10 @@ namespace OCS.Net.Addressing
         public const int MaxCDR = 32;
         public static readonly IPv4Network Empty = new IPv4Network();
         
-        private readonly IPv4AddressInternal address;
+        private readonly IPv4AddressValue address;
         private readonly byte cdr;
 
-        internal IPv4Network(IPv4AddressInternal address, byte cdr)
+        internal IPv4Network(IPv4AddressValue address, byte cdr)
         {
             this.address = address;
             this.cdr = cdr;
@@ -55,9 +55,9 @@ namespace OCS.Net.Addressing
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private static IPv4AddressInternal CalculateNetworkAddress(IPv4AddressInternal address, byte cdr)
+        private static IPv4AddressValue CalculateNetworkAddress(IPv4AddressValue address, byte cdr)
         {
-             return new IPv4AddressInternal
+             return new IPv4AddressValue
              {
                  Address = address.Address & (UInt32.MaxValue << (MaxCDR - cdr))
              };

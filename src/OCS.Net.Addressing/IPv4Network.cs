@@ -77,6 +77,15 @@ namespace OCS.Net.Addressing
             return obj is IPv4Network other && Equals(other);
         }
 
+        public override string ToString()
+        {
+            return String.Join(
+                FormatAndStructureInfo.NetworkMaskDelimiter,
+                this.address.ToString(),
+                cdr.ToString()
+            );
+        }
+
         public override int GetHashCode()
         {
             return HashCode.Combine(address, cdr);

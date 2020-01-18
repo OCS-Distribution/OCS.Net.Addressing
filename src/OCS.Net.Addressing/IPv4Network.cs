@@ -5,7 +5,7 @@ using OCS.Net.Addressing.Internal;
 
 namespace OCS.Net.Addressing
 {
-    public struct IPv4Network
+    public struct IPv4Network: IEquatable<IPv4Network>
     {
         public const int MaxCDR = 32;
         public static readonly IPv4Network Empty = new IPv4Network();
@@ -66,5 +66,20 @@ namespace OCS.Net.Addressing
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static void ThrowArgumentException() =>
             throw new ArgumentException("Expected valid ip v4 mask, as example 192.168.0.0/16");
+
+        public bool Equals(IPv4Network other)
+        {
+            return address.Address == other.address.Address && cdr == other.cdr;
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is IPv4Network other && Equals(other);
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(address, cdr);
+        }
     }
 }

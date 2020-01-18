@@ -36,7 +36,7 @@ namespace OCS.Net.Addressing.Test
         }
 
         [Fact]
-        public void CreateNewRangeWithIncorrectBorders_ShouldFail()
+        public void Constructor_CreateNewRangeWithIncorrectBorders_ShouldFail()
         {
             var left = new IPv4Address(192, 168, 1, 10);
             var right = new IPv4Address(192, 168, 0, 10);

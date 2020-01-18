@@ -10,7 +10,7 @@ namespace OCS.Net.Addressing.Test
         [InlineData("10.10.10.10/16", new byte[] {10, 10, 0, 0}, 16)]
         [InlineData("254.10.24.12/20", new byte[] {254, 10, 16, 0}, 20)]
         [InlineData("255.255.255.255/20", new byte[] {255, 255, 240, 0}, 20)]
-        public void ParseValidIPv4Network_ShouldReturnCorrectParsedNetwork(string network, byte[] addressBytes, byte cdr)
+        public void Parse_BaseCases(string network, byte[] addressBytes, byte cdr)
         {
             var networkAddress = new IPv4Address(addressBytes);
             
@@ -26,7 +26,7 @@ namespace OCS.Net.Addressing.Test
         [InlineData(new byte[] {10, 10, 0, 0}, 16, new byte[] {10, 10, 128, 241})]
         [InlineData(new byte[] {254, 10, 16, 0}, 20, new byte[] {254, 10, 16, 255})]
         [InlineData(new byte[] {255, 255, 240, 0}, 20, new byte[] {255, 255, 240, 192})]
-        public void ContainsOnAddressesInsideNetwork_ShouldReturnTrue(byte[] networkBytes, byte cdr, byte[] addressBytes)
+        public void Contains_BaseCases(byte[] networkBytes, byte cdr, byte[] addressBytes)
         {
             var network = new IPv4Network(new IPv4AddressValue
             {

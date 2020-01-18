@@ -31,7 +31,7 @@ namespace OCS.Net.Addressing
 
         public static IPv4Network Parse(string network)
         {
-            if (!TryParse(network, out var result)) 
+            if (!TryParse(network, out var result))
                 ThrowArgumentException();
             
             return result;

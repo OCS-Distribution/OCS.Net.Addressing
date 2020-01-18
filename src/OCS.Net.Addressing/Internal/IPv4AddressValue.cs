@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 namespace OCS.Net.Addressing.Internal
 {
     [StructLayout(LayoutKind.Explicit, Size = sizeof(UInt32))]
-    internal struct IPv4AddressInternal
+    internal struct IPv4AddressValue
     {
         [FieldOffset(0)] internal UInt32 Address;
 

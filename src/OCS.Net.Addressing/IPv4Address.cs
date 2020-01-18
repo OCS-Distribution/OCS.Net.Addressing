@@ -44,18 +44,9 @@ namespace OCS.Net.Addressing
         
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public override int GetHashCode() => this.value.Address.GetHashCode();
-        
-        public override string ToString()
-        {
-            return String.Join(
-                FormatAndStructureInfo.IPv4SegmentDelimiter,
-                
-                this.value.Segment1.ToString(),
-                this.value.Segment2.ToString(),
-                this.value.Segment3.ToString(),
-                this.value.Segment4.ToString()
-            );
-        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public override string ToString() => this.value.ToString();
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static IPv4AddressValue BytesToPv4AddressValue(byte[] segments)

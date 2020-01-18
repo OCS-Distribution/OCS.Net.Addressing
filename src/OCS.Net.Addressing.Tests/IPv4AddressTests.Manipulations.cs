@@ -9,17 +9,9 @@ namespace OCS.Net.Addressing.Test
         {
             var bigIp = new IPv4Address(10, 10, 10, 255);
             var oneMoreBigIp = new IPv4Address(10, 10, 10, 255);
-            
-            var mediumIp = new IPv4Address(10, 10, 10, 128);
-            
             var smallIp = new IPv4Address(10, 10, 10, 1);
             
-            Assert.True(bigIp > smallIp);
-            Assert.True(bigIp > mediumIp);
-            Assert.True(smallIp < mediumIp);
             Assert.True(smallIp != bigIp);
-            Assert.True(bigIp >= oneMoreBigIp);
-            Assert.True(bigIp <= oneMoreBigIp);
             Assert.True(bigIp == oneMoreBigIp);
         }
 

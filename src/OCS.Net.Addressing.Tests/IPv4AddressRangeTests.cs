@@ -6,18 +6,16 @@ namespace OCS.Net.Addressing.Test
     public class IPv4AddressRangeTests
     {
         [Theory]
-        [InlineData(new byte[] {192, 168, 0, 1}, false, new byte[] {192, 168, 0, 128}, false, new byte[] {192, 168, 0, 7}, true)]
-        [InlineData(new byte[] {10, 10, 0, 200}, false, new byte[] {10, 10, 10, 200}, false, new byte[] {10, 10, 5, 200}, true)]
-        [InlineData(new byte[] {10, 10, 0, 200}, true, new byte[] {10, 10, 10, 200}, false, new byte[] {10, 10, 0, 200}, true)]
-        [InlineData(new byte[] {10, 10, 0, 200}, false, new byte[] {10, 10, 10, 200}, false, new byte[] {10, 10, 0, 200}, false)]
-        [InlineData(new byte[] {10, 10, 0, 200}, false, new byte[] {10, 10, 10, 200}, true, new byte[] {10, 10, 10, 200}, true)]
-        [InlineData(new byte[] {10, 10, 0, 200}, false, new byte[] {10, 10, 10, 200}, false, new byte[] {10, 10, 10, 200}, false)]
+        [InlineData(new byte[] {192, 168, 0, 1}, new byte[] {192, 168, 0, 128}, new byte[] {192, 168, 0, 7}, true)]
+        [InlineData(new byte[] {10, 10, 0, 200}, new byte[] {10, 10, 10, 200}, new byte[] {10, 10, 5, 200}, true)]
+        [InlineData(new byte[] {10, 10, 0, 200}, new byte[] {10, 10, 10, 200}, new byte[] {10, 10, 0, 200}, true)]
+        [InlineData(new byte[] {10, 10, 0, 200}, new byte[] {10, 10, 10, 200}, new byte[] {10, 10, 0, 200}, false)]
+        [InlineData(new byte[] {10, 10, 0, 200}, new byte[] {10, 10, 10, 200}, new byte[] {10, 10, 10, 200}, true)]
+        [InlineData(new byte[] {10, 10, 0, 200}, new byte[] {10, 10, 10, 200}, new byte[] {10, 10, 10, 200}, false)]
         public void Contains_BaseCases(
             byte[] leftBytes, 
-            bool includeLeft, 
             
             byte[] rightBytes, 
-            bool includeRight, 
             
             byte[] addressBytes,
             
@@ -26,9 +24,7 @@ namespace OCS.Net.Addressing.Test
         {
             var range = new IPv4AddressRange(
                 new IPv4Address(leftBytes),
-                new IPv4Address(rightBytes),
-                includeLeft,
-                includeRight
+                new IPv4Address(rightBytes)
             );
             var address = new IPv4Address(addressBytes);
             

@@ -28,6 +28,22 @@ namespace OCS.Net.Addressing
             return this.address.Address == CalculateNetworkAddress(address.InternalAddress, cdr).Address;
         }
 
+        public IPv4AddressRange ToRange()
+        {
+            return new IPv4AddressRange(
+                NetworkAddress,
+                new IPv4Address(
+                    NetworkAddress.InternalAddress.Address | ~CalculateBitMask(cdr)
+                )
+            );
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private static uint CalculateBitMask(byte cdr)
+        {
+            return UInt32.MaxValue << (MaxCDR - cdr);
+        }
+
         public static IPv4Network Parse(string network)
         {
             if (!TryParse(network, out var result))
@@ -58,7 +74,7 @@ namespace OCS.Net.Addressing
         {
              return new IPv4AddressValue
              {
-                 Address = address.Address & (UInt32.MaxValue << (MaxCDR - cdr))
+                 Address = address.Address & CalculateBitMask(cdr)
              };
         }
 

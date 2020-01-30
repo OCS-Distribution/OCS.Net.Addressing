@@ -39,5 +39,27 @@ namespace OCS.Net.Addressing.Test
             
             Assert.True(network.Contains(address));
         }
+
+        [Theory]
+        [InlineData(new byte[] {192, 168, 0, 0}, 24, new byte[] {192, 168, 0, 0}, new byte[] {192, 168, 0, 255})]
+        [InlineData(new byte[] {254, 10, 16, 0}, 20, new byte[] {254, 10, 16, 0}, new byte[] {254, 10, 31, 255})]
+        public void ToRange_BaseCases(byte[] networkBytes, byte cdr, byte[] left, byte[] right)
+        {
+            var network = new IPv4Network(new IPv4AddressValue
+            {
+                Segment1 = networkBytes[0],
+                Segment2 = networkBytes[1],
+                Segment3 = networkBytes[2],
+                Segment4 = networkBytes[3],
+            }, cdr);
+            
+            var leftAddress = new IPv4Address(left);
+            var rightAddress = new IPv4Address(right);
+
+            var range = network.ToRange();
+            
+            Assert.Equal(leftAddress, range.Left);
+            Assert.Equal(rightAddress, range.Right);
+        }
     }
 }

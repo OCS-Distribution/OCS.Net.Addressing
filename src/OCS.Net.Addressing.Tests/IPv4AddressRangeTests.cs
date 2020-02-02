@@ -9,9 +9,9 @@ namespace OCS.Net.Addressing.Test
         [InlineData(new byte[] {192, 168, 0, 1}, new byte[] {192, 168, 0, 128}, new byte[] {192, 168, 0, 7}, true)]
         [InlineData(new byte[] {10, 10, 0, 200}, new byte[] {10, 10, 10, 200}, new byte[] {10, 10, 5, 200}, true)]
         [InlineData(new byte[] {10, 10, 0, 200}, new byte[] {10, 10, 10, 200}, new byte[] {10, 10, 0, 200}, true)]
-        [InlineData(new byte[] {10, 10, 0, 200}, new byte[] {10, 10, 10, 200}, new byte[] {10, 10, 0, 200}, false)]
         [InlineData(new byte[] {10, 10, 0, 200}, new byte[] {10, 10, 10, 200}, new byte[] {10, 10, 10, 200}, true)]
-        [InlineData(new byte[] {10, 10, 0, 200}, new byte[] {10, 10, 10, 200}, new byte[] {10, 10, 10, 200}, false)]
+        [InlineData(new byte[] {192, 168, 0, 1}, new byte[] {192, 168, 0, 128}, new byte[] {192, 168, 128, 7}, false)]
+        [InlineData(new byte[] {10, 10, 0, 200}, new byte[] {10, 10, 10, 200}, new byte[] {192, 10, 5, 200}, false)]
         public void Contains_BaseCases(
             byte[] leftBytes, 
             

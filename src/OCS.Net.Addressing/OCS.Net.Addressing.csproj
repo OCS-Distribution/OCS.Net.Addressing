@@ -4,5 +4,19 @@
         <LangVersion>latest</LangVersion>
         <TargetFrameworks>netstandard2.1;netcoreapp3.0;netcoreapp3.1</TargetFrameworks>
     </PropertyGroup>
+    
+    <PropertyGroup>
+        <PackageVersion>$(Version)</PackageVersion>
+        <Title>OCS.Net.Addressing</Title>
+        <Authors>OCS team</Authors>
+        <Copyright>OCS (c) 2019</Copyright>
+        <PackageProjectUrl>https://github.com/OCS-Distribution/OCS.Net.Addressing</PackageProjectUrl>
+        <PackageLicenseUrl>https://github.com/OCS-Distribution/OCS.Net.Addressing/blob/master/LICENSE</PackageLicenseUrl>
+        <RepositoryUrl>https://github.com/OCS-Distribution/OCS.Net.Addressing</RepositoryUrl>
+        <RepositoryType>github</RepositoryType>
+        <PackageTags>dotnetcore;ip;ipv4;ipv6;masks;network;network-addresses</PackageTags>
+
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    </PropertyGroup>
 
 </Project>

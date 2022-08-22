@@ -352,3 +352,9 @@ MigrationBackup/
 # Rider (cross platform IDE for C#/F# based on Idea) working folder
 .idea/
 tools/
+
+# project output dir
+output/
+
+# MacOS X
+.DS_Store

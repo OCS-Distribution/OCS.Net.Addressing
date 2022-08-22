@@ -3,10 +3,12 @@
     <PropertyGroup>
         <LangVersion>latest</LangVersion>
         <TargetFrameworks>net6.0;netcoreapp3.1;netstandard2.1</TargetFrameworks>
+        <Description>Library for parsing ipv4 addresses without memory allocation.</Description>
+        <PackageIcon>logo.png</PackageIcon>
     </PropertyGroup>
     
     <PropertyGroup>
-        <PackageVersion>$(Version)</PackageVersion>
+        <PackageVersion></PackageVersion>
         <Title>OCS.Net.Addressing</Title>
         <Authors>OCS team</Authors>
         <Copyright>OCS (c) 2019</Copyright>
@@ -18,5 +20,20 @@
 
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     </PropertyGroup>
+    
+    <ItemGroup>
+      <None Update="59031746.png">
+        <Pack>True</Pack>
+        <PackagePath></PackagePath>
+      </None>
+    </ItemGroup>
+    
+    <ItemGroup>
+      <None Remove="logo.png" />
+      <Content Include="logo.png">
+        <Pack>True</Pack>
+        <PackagePath></PackagePath>
+      </Content>
+    </ItemGroup>
 
 </Project>

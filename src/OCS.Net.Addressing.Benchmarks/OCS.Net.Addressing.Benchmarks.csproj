@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <OutputType>Exe</OutputType>
-        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <TargetFramework>net6.0</TargetFramework>
         <RootNamespace>OCS.Net.Addressing.Benchmark</RootNamespace>
         <IsPackable>false</IsPackable>
     </PropertyGroup>
@@ -12,7 +12,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="BenchmarkDotNet" Version="0.12.0" />
+      <PackageReference Include="BenchmarkDotNet" Version="0.13.1" />
     </ItemGroup>
 
 </Project>

@@ -85,6 +85,7 @@
               "Pack",
               "Publish",
               "Restore",
+              "RunBenchmark",
               "Test"
             ]
           }
@@ -104,6 +105,7 @@
               "Pack",
               "Publish",
               "Restore",
+              "RunBenchmark",
               "Test"
             ]
           }

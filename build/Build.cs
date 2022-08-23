@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Nuke.Common;
 using Nuke.Common.IO;
 using Nuke.Common.ProjectModel;
@@ -118,6 +119,17 @@ class Build : NukeBuild
                 .CombineWith(
                     OutputDirectory.GlobFiles("*.nupkg"), 
                     (cs, f) => cs.SetTargetPath(f)
+                )
+            );
+        });
+
+    Target RunBenchmark => _ => _
+        .Executes(() =>
+        {
+            DotNetRun(s => s
+                .SetConfiguration(Configuration.Release)
+                .CombineWith(Solution.GetProjects("*.Benchmarks"),
+                    (cs, p) => cs.SetProjectFile(p)
                 )
             );
         });

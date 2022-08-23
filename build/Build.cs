@@ -46,6 +46,7 @@ class Build : NukeBuild
         });
 
     Target Compile => _ => _
+        .DependsOn(Clean)
         .DependsOn(Restore)
         .Executes(() =>
         {
@@ -64,6 +65,7 @@ class Build : NukeBuild
         .After(Compile)
         .Before(Publish)
         .Produces(OutputDirectory / "*-results.xml")
+        .Produces(OutputDirectory / "coverage.cobertura.xml")
         .Executes(() =>
         {
             DotNetTest(s => s
@@ -73,11 +75,17 @@ class Build : NukeBuild
                 .When(IsServerBuild, c => c.EnableUseSourceLink())
                 .EnableNoRestore()
                 .EnableNoBuild()
+                .SetDataCollector("XPlat Code Coverage")
                 .CombineWith(Solution.GetProjects("*.Tests"), (_, p) => _
                     .SetProjectFile(p)
                     .SetLoggers($"junit;LogFileName={p.Name}-results.xml;MethodFormat=Class;FailureBodyFormat=Verbose")
                 )
             );
+            
+            OutputDirectory.GlobFiles("**/coverage.cobertura.xml").ForEach(
+                f => MoveFile(f, OutputDirectory / "coverage.cobertura.xml")
+            );
+            OutputDirectory.GlobDirectories("*").ForEach(DeleteDirectory);
         });
 
     Target Pack => _ => _
